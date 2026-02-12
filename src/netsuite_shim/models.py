@@ -47,7 +47,11 @@ class NetSuiteConfig(BaseSettings):
     max_retries: int = 3
     retry_backoff_factor: float = 1.0
 
-    model_config = {"env_prefix": "NETSUITE_", "env_nested_delimiter": "__"}
+    model_config = {
+        "env_prefix": "NETSUITE_",
+        "env_nested_delimiter": "__",
+        "env_file": ".env",
+    }
 
     @model_validator(mode="after")
     def _check_auth(self) -> NetSuiteConfig:
